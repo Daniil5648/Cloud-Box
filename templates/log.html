@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Box - вход</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/log.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='photos/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='photos/favicon/favicon-32x32.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='photos/favicon/site.webmanifest') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a onclick="window.location.href='/'" class="text-logo"> <h2>Cloud Box</h2> </a>
+                </div>
+                <div class="nav-links">
+                    <a class="nav-link active">Вход</a>
+                    <a onclick="window.location.href='/register'" class="nav-link">Регистрация</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="login-container">
+            <div class="login-wrapper">
+                <div class="login-outer">
+                    <div class="login-inner">
+                        <div class="login-header">
+                            <h2>Вход в аккаунт</h2>
+                            <p>Добро пожаловать!</p>
+                        </div>
+
+                        <form class="login-form">
+                            <div class="form-group">
+                                <label for="email">Имя пользователя</label>
+                                <div class="input-wrapper">
+                                    <span class="input-icon">●</span>
+                                    <input type="text" id="userName" placeholder="Введите имя пользователя" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Пароль</label>
+                                <div class="input-wrapper">
+                                    <span class="input-icon">●</span>
+                                    <input type="password" id="password" placeholder="Введите пароль" required>
+                                    <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                        <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                            <circle cx="12" cy="12" r="3"/>
+                                        </svg>
+
+                                        <svg class="eye-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: none;">
+                                            <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                            <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                            <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                            <line x1="2" x2="22" y1="2" y2="22"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-options">
+                                <label class="checkbox">
+                                    <input type="checkbox" id="checkBoxRM">
+                                    <span class="checkmark"></span>
+                                    Запомнить меня
+                                </label>
+                            </div>
+
+                            <button type="button" id="btnLogin" class="btn-login">Войти</button>
+                        </form>                       
+
+                        <div class="signup-link">
+                            <p>Ещё нет аккаунта? <a onclick="window.location.href='/register'">Зарегестрируйтесь</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/log.js')}}"></script>
+</body>
+</html>

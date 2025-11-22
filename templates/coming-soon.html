@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Box - В скором времени</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/coming-soon.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='photos/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='photos/favicon/favicon-32x32.png') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>Cloud Box</h2>
+            </div>
+        </div>
+    </nav>
+
+    <main class="coming-soon-container">
+        <div class="coming-soon-content">
+            <div class="animation-container">
+                <div class="floating-clouds">
+                    <div class="cloud cloud-1">☁️</div>
+                    <div class="cloud cloud-2">☁️</div>
+                    <div class="cloud cloud-3">☁️</div>
+                </div>
+                <div class="main-icon">🚧</div>
+            </div>
+            
+            <h1 class="coming-soon-title">В разработке</h1>
+            <p class="coming-soon-subtitle">В скором времени на сайте</p>
+            <p class="coming-soon-description"> Скоро здесь появится новая функциональность! </p>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <span class="progress-text">Загрузка...</span>
+            </div>
+
+            <button class="btn-back" onclick="window.location.href='/'">
+                ← Вернуться на главную
+            </button>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/coming-soon.js')}}"></script>
+</body>
+</html>

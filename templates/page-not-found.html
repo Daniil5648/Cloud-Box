@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Box - страница не найдена</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page-not-found.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='photos/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='photos/favicon/favicon-32x32.png') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a onclick="window.location.href='/'" class="text-logo">
+                    <h2>Cloud Box</h2>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="error-container">
+        <div class="error-content">
+            <div class="error-animation">
+                <div class="floating-element element-1">☁️</div>
+                <div class="floating-element element-2">📁</div>
+                <div class="floating-element element-3">🔍</div>
+                <div class="error-number">404</div>
+            </div>
+            
+            <h1 class="error-title">Страница не найдена</h1>
+            <p class="error-subtitle">
+                Страница, которую вы ищете, могла быть перемещена, удалена 
+                или возможно, вы ошиблись в адресе.
+            </p>
+
+            <div class="error-actions">
+                <button class="btn-primary" onclick="window.location.href='/'">
+                    🏠 На главную страницу
+                </button>
+                <button class="btn-secondary" onclick="window.history.back()">
+                    ↩️ Вернуться назад
+                </button>
+            </div>
+        </div>
+
+        <div class="error-footer">
+            <p>Если проблема повторяется, <a onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=prob291u@gmail.com&su=Вопрос для Cloud Box Team&body=Пожалуйста изложите подробно здесь свой вопрос')">свяжитесь с поддержкой</a></p>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/page-not-found.js')}}"></script>
+</body>
+</html>

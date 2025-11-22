@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Box</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='photos/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='photos/favicon/favicon-32x32.png') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>Cloud Box</h2>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-nav" onclick="window.location.href='/api-docs'">API документация</button>
+                <button class="btn-nav" onclick="window.location.href='/profile'">Профиль</button>
+                <button class="btn-signin" onclick="window.location.href='/login'">Вход</button>
+                <button class="btn-signup" onclick="window.location.href='/register'">Регистрация</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Cloud Box
+            </h1>
+            <p class="hero-subtitle">Надежное облачное хранилище для ваших файлов</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="window.location.href='/register'">Начать бесплатно</button>
+                <button class="btn-secondary" onclick="showFeaturesOverview()">Узнать больше</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают Cloud Box?</h2>
+            <p class="section-subtitle">Современное решение для хранения и управления вашими цифровыми активами</p>
+            
+            <div class="features-grid">
+                <div class="feature-card storage-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="feature-svg cloud-icon">
+                            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Неограниченные возможности</h3>
+                    <p class="feature-description">Cloud Box предоставляет мощную инфраструктуру для хранения любых типов файлов - от документов до мультимедийного контента. Наша платформа масштабируется в соответствии с вашими потребностями.</p>
+                </div>
+
+                <div class="feature-card encryption-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="feature-svg shield-icon">
+                            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Безопасность превыше всего</h3>
+                    <p class="feature-description">Мы используем передовые технологии шифрования для защиты ваших данных. Все файлы защищены на уровне предприятия, что гарантирует полную конфиденциальность и безопасность вашей информации.</p>
+                </div>
+
+                <div class="feature-card api-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="feature-svg zap-icon">
+                            <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Мощный API</h3>
+                    <p class="feature-description">Интегрируйте облачное хранилище в свои приложения с помощью нашего REST API. Простые эндпоинты, подробная документация и быстрая обработка запросов делают интеграцию максимально удобной.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-secondary">
+        <div class="container">
+            <h2 class="section-title">Как это работает?</h2>
+            <p class="section-subtitle">Простой и интуитивно понятный процесс работы с вашими файлами</p>
+            
+            <div class="features-grid">
+                <div class="feature-card feature-card-upload">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="feature-svg">
+                            <path d="M12 3v12"></path>
+                            <path d="m17 8-5-5-5 5"></path>
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">1. Загрузите файлы</h3>
+                    <p class="feature-description">Просто перетащите файлы в браузер или используйте кнопку загрузки. Поддерживаются все популярные форматы - документы, изображения, видео, архивы и многое другое.</p>
+                </div>
+
+                <div class="feature-card feature-card-organize">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="feature-svg">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10,9 9,9 8,9"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">2. Организуйте хранилище</h3>
+                    <p class="feature-description">Все ваши файлы автоматически организуются и становятся доступными из любого места. Просматривайте, сортируйте и управляйте вашими данными через удобный веб-интерфейс.</p>
+                </div>
+
+                <div class="feature-card feature-card-integration">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="feature-svg">
+                            <polyline points="16 18 22 12 16 6"></polyline> <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">3. Интеграция с приложениями</h3>
+                    <p class="feature-description">Легко интегрируйте Cloud Box в свои проекты через REST API. Используйте мощные возможности хранения в веб-приложениях, мобильных apps и desktop программах.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Начните использовать Cloud Box сегодня</h2>
+            <p class="section-subtitle">Присоединяйтесь к тысячам пользователей, которые уже доверяют нам свои данные</p>
+            
+            <div class="cta-container">
+                <div class="cta-card">
+                    <h3 class="cta-title">Бесплатный тариф "Lite"</h3>
+                    <p class="cta-description">
+                        Начните с 20 ГБ бесплатного пространства. Этого достаточно для тысяч документов, 
+                        сотен фотографий и десятков видеофайлов. Все функции доступны без ограничений.
+                    </p>
+                    <button class="btn-primary cta-button" onclick="window.location.href='/register'">
+                        Создать аккаунт
+                    </button>
+                    <p class="cta-note">
+                        Регистрация займет менее минуты
+                    </p>
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <h4 class="benefit-title">📁 Все форматы файлов</h4>
+                        <p class="benefit-description">Поддержка документов, изображений, видео, архивов и многое другое</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4 class="benefit-title">🔐 Защита данных</h4>
+                        <p class="benefit-description">Шифрование файлов и безопасное хранение</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4 class="benefit-title">🌐 Доступ откуда угодно</h4>
+                        <p class="benefit-description">Работайте с файлами с любого устройства</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Наш сервис</h4>
+                    <ul>
+                        <li><a onclick="window.location.href='/profile'">Облачное хранилище</a></li>
+                        <li><a onclick="window.location.href='/profile'">Загрузка файлов</a></li>
+                        <li><a onclick="window.location.href='/coming-soon'">Тарифные планы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=prob291u@gmail.com&su=Вопрос для Cloud Box Team&body=Пожалуйста изложите подробно здесь свой вопрос')">Задать вопрос</a></li>
+                        <li><a onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=prob291u@gmail.com&su=письмо для Cloud Box Team')">Связаться с нами</a></li>
+                        <li><a onclick="window.location.href='/api-docs'">Справочник по API</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToFeatures() {
+            document.querySelector('.section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>

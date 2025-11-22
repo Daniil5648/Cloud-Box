@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Box - профиль</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='photos/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='photos/favicon/favicon-32x32.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2 onclick="window.location.href='/'">Cloud Box</h2>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mainContent" style="display: none;">
+        <div class="profile-container">
+            <div class="unified-header">
+                <div class="user-info-section">
+                    <div class="user-info">
+                        <h1>Привет, <span id="getUser_name">#user_name</span>! </h1>
+                        <p>Добро пожаловать в ваш личный кабинет</p>
+                    </div>
+                </div>
+                
+                <div class="stats-section">
+                    <div class="stat-card-compact">
+                        <div class="stat-icon files">📁</div>
+                        <div class="stat-info-compact">
+                            <h3 id="filesCount">0</h3>
+                            <p>Файлов</p>
+                        </div>
+                    </div>
+                    <div class="stat-card-compact">
+                        <div class="stat-icon subscription">✅</div>
+                        <div class="stat-info-compact">
+                            <h3>Активна</h3>
+                            <p>Подписка - <span id="span-subscription"> #subscription </span></p>
+                        </div>
+                    </div>
+                    <div class="stat-card-compact">
+                        <div class="stat-icon info">⚙️</div>
+                        <div class="stat-info-compact">
+                            <h3 id="usage-disk"> #usage_disk </h3>
+                            <p>Заполненно из 20 GB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="sidebar">
+                    <div class="sidebar-section">
+                        <h3>Аккаунт</h3>
+                        <a class="sidebar-btn" id="getMyEmail">
+                            <span class="btn-icon">📧</span>
+                            Моя почта
+                        </a>
+                        <a class="sidebar-btn" id="getMyAPI">
+                            <span class="btn-icon">🔑</span>
+                            API ключ
+                        </a>
+                    </div>
+                    
+                    <a class="sidebar-btn logout" id="btnLogout">
+                        <span class="btn-icon">🚪</span>
+                        Выйти
+                    </a>
+                </div>
+
+                <div class="main-area">
+                    <div class="upload-section">
+                        <h3>Загрузка файлов</h3>
+                        <div class="upload-area">
+                            <div class="file-input-wrapper">
+                                <input type="file" id="fileInput" class="file-input">
+                            </div>
+                            <button class="upload-btn" id="btnUpload">
+                                Загрузить
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="files-section">
+                        <h3>Мои файлы</h3>
+                        <div class="files-container" id="filesList">
+                            <!-- files update this div from JavaScript -->
+                            <div class="empty-state">
+                                <div class="icon">📁</div>
+                                <h3>Файлов пока нет</h3>
+                                <p>Загрузите ваш первый файл</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="verifityDiv" class="verification-overlay">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2 onclick="window.location.href='/'">Cloud Box</h2>
+                </div>
+            </div>
+        </nav>
+
+        <div class="verification-section">
+            <div class="verification-card">
+                <div class="verification-header">
+                    <h2>Подтверждение почты</h2>
+                    <p>Мы отправили код подтверждения на вашу электронную почту. Введите его в поле ниже.</p>
+                </div>
+                
+                <button class="verification-btn" id="verfityEmail">
+                    Отправить код повторно
+                </button>
+                
+                <input type="text" 
+                    id="codeInput" 
+                    class="code-input-single" 
+                    placeholder="Введите код"
+                    maxlength="50">
+                
+                <p class="code-hint">Код чувствителен к регистру</p>
+                
+                <div class="verification-buttons">
+                    <button class="verification-btn" id="checkCode">
+                        Подтвердить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/profile.js')}}"></script>
+</body>
+</html>

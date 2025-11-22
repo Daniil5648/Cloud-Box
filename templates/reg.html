@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Box - создание аккаунта</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='photos/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='photos/favicon/favicon-32x32.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='photos/favicon/site.webmanifest') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reg.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a onclick="window.location.href='/'" class="text-logo"> <h2>Cloud Box</h2> </a>
+                </div>
+                <div class="nav-links">
+                    <a onclick="window.location.href='/login'" class="nav-link">Войти</a>
+                    <a class="nav-link active">Зарегистрироваться</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="register-container">
+            <div class="register-wrapper">
+                <div class="register-outer">
+                    <div class="register-inner">
+                        <div class="register-header">
+                            <h2>Создание аккаунта</h2>
+                            <p>Присоединяйтесь к нам сегодня! Это займёт всего минуту.</p>
+                        </div>
+
+                        <form class="register-form">
+                            <div class="form-group">
+                                <label for="userName">Имя пользователя</label>
+                                
+                                <div class="input-wrapper">
+                                    <span class="input-icon">●</span>
+                                    <input type="text" id="userName" placeholder="Введите Ваше имя" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Эл. почта</label>
+
+                                <div class="input-wrapper">
+                                    <span class="input-icon">●</span>
+                                    <input type="email" id="email" placeholder="Введите Вашу почту" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Придумайте пароль</label>
+
+                                <div class="input-wrapper">
+                                    <span class="input-icon">●</span>
+
+                                    <input type="password" id="password" placeholder="Придумайте сложный пароль" required>
+
+                                    <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                        <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                            <circle cx="12" cy="12" r="3"/>
+                                        </svg>
+
+                                        <svg class="eye-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: none;">
+                                            <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                            <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                            <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                            <line x1="2" x2="22" y1="2" y2="22"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirm-password">Повторите пароль</label>
+
+                                <div class="input-wrapper">
+                                    <span class="input-icon">●</span>
+
+                                    <input type="password" id="confirm-password" placeholder="Повторите ваш пароль" required>
+                                    
+                                    <button type="button" class="password-toggle" onclick="togglePassword('confirm-password')">
+                                        <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                            <circle cx="12" cy="12" r="3"/>
+                                        </svg>
+
+                                        <svg class="eye-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: none;">
+                                            <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                            <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                            <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                            <line x1="2" x2="22" y1="2" y2="22"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-options">
+                                <label class="checkbox">
+                                    <input type="checkbox" id="terms" required>
+                                    <span class="checkmark"></span>
+                                    <span class="terms-text">
+                                        Я согласен с <a onclick="window.location.href='/coming-soon'" class="terms-link">Условиями использования</a> и <a onclick="window.location.href='/coming-soon'" class="terms-link">Политикой конфиденциальности</a>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn-register" id="btnRegister" disabled>Зарегистрироваться</button>
+                        </form>
+
+                        <div class="login-link">
+                            <p>Уже есть аккаунт? <a onclick="window.location.href='/login'">Войдите!</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/reg.js')}}"></script>
+</body>
+</html>
