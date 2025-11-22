@@ -177,10 +177,10 @@ def send_email(to: str, content: str, from_email: str, subject: str):
         server.ehlo()
         server.starttls()
 
-        server.login('prob291u@gmail.com', 'blam qtko ueut pjsn')
+        server.login('mail@example.com', 'your mail code')
 
         message = f"From: {from_email}\nSubject: {subject}\n\n{content}"
-        server.sendmail('prob291u@gmail.com', to, message.encode('utf-8'))
+        server.sendmail('mail@example.com', to, message.encode('utf-8'))
 
         server.close()
 
@@ -674,7 +674,7 @@ def delete_file():
 
 
 #API запросы ниже
-@app.route('/api/<api_key>/user_info', methods=['POST'])
+@app.route('/api/<api_key>/user_info', methods=['GET'])
 def api_get_user_info(api_key):
     """
     Получить информацию о пользователе через API
@@ -696,7 +696,7 @@ def api_get_user_info(api_key):
         'is_verified': user.is_verified
     }), 200
 
-@app.route('/api/<api_key>/user_files', methods=['POST'])
+@app.route('/api/<api_key>/user_files', methods=['GET'])
 def api_get_user_files(api_key):
     """
     Получить файлы из облака пользователя

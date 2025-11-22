@@ -38,12 +38,6 @@ function loadUserFiles() {
             }));
         }
         
-        else if (typeof data.files === 'object' && data.files !== null) {
-            files = Object.keys(data.files).map(key => ({
-                name: key,
-            }));
-        }
-        
         else if (data.files) {
             files = [{
                 name: data.files,
@@ -98,15 +92,20 @@ function renderFiles(files) {
             </div>
         `;
 
-        if (filesCount) filesCount.textContent = '0';
+        if (filesCount) {
+            filesCount.textContent = '0';
+        }
 
         return;
     }
     
-    if (filesCount) filesCount.textContent = files.length;
-    
+    if (filesCount) {
+        filesCount.textContent = files.length;
+    }
+
     files.forEach((file) => {
         const fileElement = createFileElement(file);
+
         filesContainer.appendChild(fileElement);
     });
 }
@@ -115,40 +114,27 @@ function createFileElement(file) {
     const fileDiv = document.createElement('div');
     fileDiv.className = 'file-item';
     
-    const fileIcon = getFileIcon(file);
-    const fileName = typeof file === 'string' ? file : file.name;
-    
-    const safeFileName = fileName.replace(/'/g, "\\'");
+    let fileName;
+
+    if (typeof file == 'string') {
+        fileName = file;
+    }
+
+    else {
+        fileName = file.name;
+    }
     
     fileDiv.innerHTML = `
-        <div class="file-icon">${fileIcon}</div>
         <div class="file-info">
             <div class="file-name">${fileName}</div>
         </div>
         <div class="file-actions">
-            <button class="action-btn download" onclick="downloadFile('${safeFileName}')" title="Скачать">💾</button>
-            <button class="action-btn delete" onclick="deleteFile('${safeFileName}')" title="Удалить">🗑️</button>
+            <button class="action-btn download" onclick="downloadFile('${fileName}')" title="Скачать">💾</button>
+            <button class="action-btn delete" onclick="deleteFile('${fileName}')" title="Удалить">🗑️</button>
         </div>
     `;
     
     return fileDiv;
-}
-
-function getFileIcon(file) {
-    const fileName = typeof file === 'string' ? file : file.name;
-    const name = fileName.toLowerCase();
-    
-    if (name.match(/\.(jpg|jpeg|png|gif|webp|bmp|svg)$/)) return '🖼️';
-    if (name.match(/\.(pdf)$/)) return '📄';
-    if (name.match(/\.(doc|docx)$/)) return '📝';
-    if (name.match(/\.(xls|xlsx|csv)$/)) return '📊';
-    if (name.match(/\.(zip|rar|7z|tar|gz)$/)) return '📦';
-    if (name.match(/\.(mp4|avi|mov|mkv|wmv|flv)$/)) return '🎥';
-    if (name.match(/\.(mp3|wav|ogg|flac)$/)) return '🎵';
-    if (name.match(/\.(txt|rtf)$/)) return '📃';
-    if (name.match(/\.(ppt|pptx)$/)) return '📽️';
-    
-    return '📁';
 }
 
 function downloadFile(filename) {
@@ -173,33 +159,43 @@ function downloadFile(filename) {
     })
     .then(response => {
         if (!response.ok) {
-            return response.json().then(data => {
-                throw new Error(data.message);
+            return response.json().then(errorData => {
+                throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
             });
         }
+        
         return response.blob();
     })
     .then(blob => {
         Swal.close();
         
+        if (!blob || blob.size === 0) {
+            throw new Error('Получен пустой файл');
+        }
+        
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
+
         a.href = url;
         a.download = filename;
         document.body.appendChild(a);
         a.click();
         
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
+        setTimeout(() => {
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }, 100);
         
         Swal.fire({
             title: 'Успех!',
             text: `Файл "${filename}" успешно скачан`,
             icon: 'success',
-            confirmButtonText: 'OK'
+            confirmButtonText: 'OK',
+            timer: 2000
         });
     })
     .catch(error => {
+        Swal.close();
         Swal.fire({
             title: 'Ошибка!',
             text: `Не удалось скачать файл: ${error.message}`,
