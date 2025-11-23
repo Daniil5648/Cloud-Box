@@ -89,18 +89,18 @@ cloud-box/
 │   └── reg.html
 ├── LICENSE
 └── README.md
-
-💰 For Clients
+```
+## 💰 For Clients
 This project shows I can:
 
-✅ Full-stack development (frontend + backend)
+- ✅ Full-stack development (frontend + backend)
 
-✅ Database and file system work
+- ✅ Database and file system work
 
-✅ REST API design
+- ✅ REST API design
 
-✅ Security and authentication
+- ✅ Security and authentication
 
-✅ Clean maintainable code
+- ✅ Clean maintainable code
 
-Contact: @wexxside
+Contact: [@wexxside](https://t.me/wexxside)
