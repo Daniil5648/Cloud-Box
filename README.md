@@ -21,7 +21,7 @@ Simple cloud file storage on Flask. Like your personal Google Drive.
 
 ```bash
 # 1. Clone
-git clone https://github.com/yourname/cloud-box.git
+git clone https://github.com/Daniil5648/Cloud-Box.git
 cd cloud-box
 
 # 2. Virtual environment  
